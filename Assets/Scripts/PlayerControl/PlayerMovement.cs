@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float jumpHeight = 2.0f;
     private Vector3 velocity;
+    bool isGrounded;
 
     [SerializeField] private Joystick joystick;
 
@@ -54,8 +55,8 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         #region Jumping
-        bool isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if (Input.GetButtonDown("Jump"))
         {
             Jump();
         }
@@ -68,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Jump()
-    {
-        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    {   
+        if (isGrounded)
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
 }

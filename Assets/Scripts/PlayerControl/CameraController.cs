@@ -11,8 +11,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] private TouchController touchController;
 
     [SerializeField] private GameObject mobileControllersCanvas;
-
     [SerializeField] private float rotationSpeedX, rotationSpeedY;
+
+    [SerializeField] private float horizontalSpeed, verticalSpeed;
 
     private void Start()
     {
@@ -20,12 +21,10 @@ public class CameraController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            mobileControllersCanvas.SetActive(false);
+            mobileControllersCanvas.SetActive(false); 
         }
         else
         {
-            freeLookCamera.m_XAxis.m_InputAxisName = "";
-            freeLookCamera.m_YAxis.m_InputAxisName = "";
             mobileControllersCanvas.SetActive(true);
         }
     }
@@ -40,6 +39,12 @@ public class CameraController : MonoBehaviour
                 Cursor.lockState = isCursorVisable ? CursorLockMode.None : CursorLockMode.Locked;
                 Cursor.visible = isCursorVisable;
             }
+
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
+
+            freeLookCamera.m_XAxis.Value += mouseX * horizontalSpeed * Time.deltaTime;
+            freeLookCamera.m_YAxis.Value -= mouseY * verticalSpeed * Time.deltaTime;
         }
         else if (YandexGame.EnvironmentData.isMobile)
         {

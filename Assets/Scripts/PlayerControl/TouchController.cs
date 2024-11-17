@@ -8,8 +8,18 @@ public class TouchController : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private bool isDragging = false;
     public float movementThreshold = 1.0f; // Порог для движения
 
+    private static int activePointerId = -1; // Идентификатор активного касания (-1, если нет активного касания)
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        // Если уже есть активное касание, игнорируем это
+        if (activePointerId != -1 && activePointerId != eventData.pointerId)
+        {
+            return;
+        }
+
+        // Устанавливаем текущее касание как активное
+        activePointerId = eventData.pointerId;
         isDragging = true;
         dragDelta = Vector2.zero;
         previousPosition = eventData.position;
@@ -17,10 +27,16 @@ public class TouchController : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
+        // Проверяем, что обрабатывается только активное касание
+        if (eventData.pointerId != activePointerId)
+        {
+            return;
+        }
+
         Vector2 currentPosition = eventData.position;
         dragDelta = currentPosition - previousPosition;
 
-        // Проверка порога движения: обновляем дельту только при реальном сдвиге
+        // Проверяем порог движения
         if (dragDelta.magnitude > movementThreshold)
         {
             previousPosition = currentPosition;
@@ -33,6 +49,14 @@ public class TouchController : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        // Проверяем, что завершает активное касание
+        if (eventData.pointerId != activePointerId)
+        {
+            return;
+        }
+
+        // Сбрасываем состояние
+        activePointerId = -1;
         isDragging = false;
         dragDelta = Vector2.zero;
     }

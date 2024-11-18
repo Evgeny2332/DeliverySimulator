@@ -17,9 +17,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float jumpHeight = 2.0f;
     private Vector3 velocity;
-    bool isGrounded;
+    public bool isGrounded, isMove;
 
     [SerializeField] private Joystick joystick;
+
 
     private void Start()
     {
@@ -47,15 +48,24 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 moveDirection = (cameraForward * moveY + cameraRight * moveX).normalized;
 
-        if (moveDirection.magnitude > 0.1f)
+        if (moveDirection.magnitude > 0.05f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            if(isGrounded)
+                isMove = true;
+            else
+                isMove = false;
+        }
+        else
+        {
+            isMove = false;
         }
         #endregion
 
         #region Jumping
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
         if (Input.GetButtonDown("Jump"))
         {
             Jump();

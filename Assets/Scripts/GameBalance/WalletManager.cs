@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class WalletManager : MonoBehaviour
 {
     private double power = 1;
-    private double energy = 1;
+    private double energy = 0;
 
     [SerializeField] private Text powerText;
     [SerializeField] private Text energyText;

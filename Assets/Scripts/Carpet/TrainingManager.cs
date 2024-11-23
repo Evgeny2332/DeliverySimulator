@@ -7,26 +7,40 @@ public class TrainingManager : MonoBehaviour
 {
     [SerializeField] private WalletManager walletManager;
     [SerializeField] private Animator animator;
-    [SerializeField] private double needEnergy = 1;
+
     [SerializeField] private Text needEnergyButtonText;
     [SerializeField] private TextMeshProUGUI needEnergyWindowText;
     [SerializeField] private GameObject trainingInterface;
+
+    private double needEnergy = 1;
+
+    public double NeedEnergy
+    {
+        get
+        {
+            return needEnergy;
+        }
+        set
+        {
+            needEnergy = value;
+            needEnergyWindowText.text = $"Требуется {NumberFormater.FormatNumber(needEnergy)}";
+            needEnergyButtonText.text = $"{NumberFormater.FormatNumber(needEnergy)}";
+        }
+    }
 
     private void OnEnable() => EventManager.PlayerUsedCarpet.Invoke();
     private void OnDisable() => EventManager.PlayerUnusedCarpet.Invoke();
 
     private void BuyUpPower()
     {
-        walletManager.Energy -= needEnergy;
-        needEnergy *= 1.3;
-        needEnergyWindowText.text = $"Требуется {NumberFormater.FormatNumber(needEnergy)}";
-        needEnergyButtonText.text = $"{NumberFormater.FormatNumber(needEnergy)}";
+        walletManager.Energy -= NeedEnergy;
+        NeedEnergy *= 1.3;
         walletManager.Power++;
     }
 
     private IEnumerator Training()
     {
-        if (walletManager.Energy >= needEnergy)
+        if (walletManager.Energy >= NeedEnergy)
         {
             BuyUpPower();
             trainingInterface.SetActive(false);

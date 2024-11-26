@@ -5,47 +5,28 @@ public class StateMachineAnimator : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerInteractive playerInteractive;
 
-    [SerializeField] private Animator animator;
+    private Animator animator;
+
+    // Переменные для логики
+    private bool isMove;
+    private bool isTakeBox;
+    private bool isGrounded;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
-        if (playerMovement.isMove)
-        {
-            if (playerInteractive.isTakeBox)
-            {
-                animator.SetBool("isRun2", true);
-                animator.SetBool("isRun", false);
-                animator.SetBool("isIdleBox", false);
-            }
-            else
-            {
-                animator.SetBool("isRun2", false);
-                animator.SetBool("isRun", true);
-            }
-        }
-        else
-        {
-            if (playerInteractive.isTakeBox)
-            {
-                animator.SetBool("isRun2", false);
-                animator.SetBool("isIdleBox", true);
-            }
-            else
-            {
-                animator.SetBool("isRun", false);
-                animator.SetBool("isIdleBox", false);
-                animator.SetBool("isRun2", false);
-            }
-        }
+        // Пример получения значений (замените на свою логику)
+        isMove = playerMovement.isMove; // Персонаж движется
+        isTakeBox = playerInteractive.isTakeBox;       // Удерживание коробки
+        isGrounded = playerMovement.isGrounded; // Проверка на землю
 
-
-        if (!playerMovement.isGrounded && !playerInteractive.isTakeBox)
-        {
-            animator.SetBool("isFall", true);
-        }
-        else if (playerMovement.isGrounded && !playerInteractive.isTakeBox)
-        {
-            animator.SetBool("isFall", false);
-        }
+        // Передача значений в аниматор
+        animator.SetBool("isMove", isMove);
+        animator.SetBool("isTakeBox", isTakeBox);
+        animator.SetBool("isGrounded", isGrounded);
     }
 }

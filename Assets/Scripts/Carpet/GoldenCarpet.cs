@@ -23,7 +23,7 @@ public class GoldenCarpet : Carpet
     {
         if (id == 1)
         {
-            walletManager.Power += CalculatorConvert(walletManager.Energy);
+            walletManager.Power += CalculatorConvert(walletManager.Energy) + 1;
             walletManager.Energy = 0;
             trainingManager.NeedEnergy = tempNeedEnergy;
 
@@ -38,7 +38,7 @@ public class GoldenCarpet : Carpet
         int countPower = 0;
         while (tempNeedEnergy <= tempEnergy)
         {
-            tempNeedEnergy *= 1.3;
+            tempNeedEnergy *= 1.05;
             tempEnergy -= tempNeedEnergy;
             countPower++;
         }
@@ -62,7 +62,7 @@ public class GoldenCarpet : Carpet
 
     public void OpenConvertWindow()
     {
-        convertText.text = $"Вы желаете обменять {walletManager.Energy} энергии на {CalculatorConvert(walletManager.Energy)} силы за рекламу?";
+        convertText.text = $"Вы желаете обменять {NumberFormater.FormatNumber(walletManager.Energy)} энергии на {CalculatorConvert(walletManager.Energy) + 1} силы за рекламу?";
         EventManager.PlayerUsedCarpet();
         convertWindow.SetActive(true);
     }

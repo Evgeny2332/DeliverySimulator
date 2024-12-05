@@ -38,7 +38,7 @@ public class GoldenCarpet : Carpet
         int countPower = 0;
         while (tempNeedEnergy <= tempEnergy)
         {
-            tempNeedEnergy *= 1.05;
+            tempNeedEnergy *= 1.1;
             tempEnergy -= tempNeedEnergy;
             countPower++;
         }

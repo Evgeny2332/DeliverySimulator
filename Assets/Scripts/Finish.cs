@@ -8,6 +8,8 @@ public class Finish : MonoBehaviour
     [SerializeField] private GameObject[] boxes;
     [SerializeField] private int[] rewardForBox;
 
+    [SerializeField] private float multiplierPet = 1;
+
     public int idBox;
 
     private void OnTriggerEnter(Collider other)
@@ -15,7 +17,8 @@ public class Finish : MonoBehaviour
         if (other.CompareTag("Player") && playerInteractive.isTakeBox)
         {
             boxes[idBox].SetActive(false);
-            walletManager.Energy += rewardForBox[idBox];
+            multiplierPet = Pet.Instance.mulptiplierPet;
+            walletManager.Energy += rewardForBox[idBox] * multiplierPet;
             playerInteractive.isTakeBox = false;
         }
     }

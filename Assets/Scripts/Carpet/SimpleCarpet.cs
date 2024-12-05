@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SimpleCarpet : Carpet
 {
+    [SerializeField] private PlayerInteractive playerInteractive;
+
     public override void TriggerStay()
     {
         takeWindow.SetActive(true);
@@ -18,7 +20,10 @@ public class SimpleCarpet : Carpet
 
     public void OnTraining()
     {
-        takeWindow.SetActive(false);
-        sceneTraining.SetActive(true);
+        if (!playerInteractive.isTakeBox)
+        {
+            takeWindow.SetActive(false);
+            sceneTraining.SetActive(true);
+        }
     }
 }

@@ -34,7 +34,7 @@ public class TrainingManager : MonoBehaviour
     private void BuyUpPower()
     {
         walletManager.Energy -= NeedEnergy;
-        NeedEnergy *= 1.05;
+        NeedEnergy *= 1.1;
         walletManager.Power++;
     }
 

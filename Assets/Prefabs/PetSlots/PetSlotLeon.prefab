@@ -260,8 +260,6 @@ GameObject:
   - component: {fileID: 2234595148237672538}
   - component: {fileID: 7268083550689582392}
   - component: {fileID: 3800804631399263009}
-  - component: {fileID: 5404996849934074369}
-  - component: {fileID: -1994924031751911636}
   m_Layer: 0
   m_Name: PetSlotLeon
   m_TagString: Untagged
@@ -401,27 +399,3 @@ MonoBehaviour:
   boostValue: 2.5
   boost: {fileID: 4226970002944867600}
   spriteTake: {fileID: 243533825390366086}
---- !u!114 &5404996849934074369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8667531823499394925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b09af23519259b4e8b54fafd222a883, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!225 &-1994924031751911636
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8667531823499394925}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0

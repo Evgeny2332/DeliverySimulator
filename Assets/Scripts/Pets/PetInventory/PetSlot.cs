@@ -37,18 +37,6 @@ public class PetSlot : MonoBehaviour
 
     public void TakePet()
     {
-        if (spriteTake.activeSelf == false)
-        {
-            PetsInventory.TakenPet.Invoke();
-            spriteTake.SetActive(true);
-            Pet.Instance.SetPet(petId);
-            Pet.Instance.mulptiplierPet = boostValue;
-        }
-        else
-        {
-            Pet.Instance.isTake = false;
-            spriteTake.SetActive(false);
-            Pet.Instance.DiactivePet();
-        }
+        UsePetWindow.Instance.OnWindow(iconSpite);
     }
 }

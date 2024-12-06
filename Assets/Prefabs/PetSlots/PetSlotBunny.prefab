@@ -185,8 +185,6 @@ GameObject:
   - component: {fileID: 6710207520221092095}
   - component: {fileID: 2420585352190681605}
   - component: {fileID: 3998761175156943658}
-  - component: {fileID: 8683519704540081142}
-  - component: {fileID: -9124592601236978628}
   m_Layer: 0
   m_Name: PetSlotBunny
   m_TagString: Untagged
@@ -326,30 +324,6 @@ MonoBehaviour:
   boostValue: 1.7
   boost: {fileID: 2539605602047149509}
   spriteTake: {fileID: 7563586857722137459}
---- !u!114 &8683519704540081142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5280551610748862898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b09af23519259b4e8b54fafd222a883, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!225 &-9124592601236978628
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5280551610748862898}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &7563586857722137459
 GameObject:
   m_ObjectHideFlags: 0

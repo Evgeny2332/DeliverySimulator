@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 212935645817508200}
   - component: {fileID: 721629458156169706}
   - component: {fileID: 1833215604480234102}
-  - component: {fileID: 7672592485598247296}
-  - component: {fileID: -7706929666274625380}
   m_Layer: 0
   m_Name: PetSlotCat
   m_TagString: Untagged
@@ -154,30 +152,6 @@ MonoBehaviour:
   boostValue: 1.2
   boost: {fileID: 6715417350609483388}
   spriteTake: {fileID: 8344088585100479053}
---- !u!114 &7672592485598247296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274635483867503122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b09af23519259b4e8b54fafd222a883, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!225 &-7706929666274625380
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274635483867503122}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &3628285072650512852
 GameObject:
   m_ObjectHideFlags: 0
